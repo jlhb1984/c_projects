@@ -3,6 +3,10 @@
  * Author: jlhb1
  *
  * Created on 7 de marzo de 2026, 04:21 PM
+ * PA0  pin40   ADC0    Channel0 to ADC.
+ * PD2  pin16   INT0    External interrupt.
+ * PD5  pin19   OC1A    Comparator mode output.
+ * PB0  pin1            Trigger signal.
  */
 
 #define F_CPU 1000000UL
@@ -14,7 +18,7 @@ uint8_t low_byte;
 uint8_t high_byte;
 
 // 1. Define the ISR (Interrupt Service Routine)
-// This code runs AUTOMATICALLY when PD2 hits the ground
+// This code runs AUTOMATICALLY when PD2 has a rising edge.
 ISR(INT0_vect) {
     cli();
     ADCSRA|=(1 << ADSC);
